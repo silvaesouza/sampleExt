@@ -34,4 +34,13 @@
 		<servlet-name>plantService</servlet-name>
 		<url-pattern>/sampleext/plantService</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>formExampleService</servlet-name>
+		<servlet-class>br.com.silvaesouza.sampleext.server.FormExampleServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>formExampleService</servlet-name>
+		<url-pattern>/sampleext/formExampleService</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -4,24 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
 import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.sencha.gxt.core.client.XTemplates;
-import com.sencha.gxt.data.client.loader.RpcProxy;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.loader.LoadResultListStoreBinding;
-import com.sencha.gxt.data.shared.loader.MemoryProxy;
 import com.sencha.gxt.data.shared.loader.PagingLoadConfig;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;
-import com.sencha.gxt.data.shared.loader.PagingLoadResultBean;
 import com.sencha.gxt.data.shared.loader.PagingLoader;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 import com.sencha.gxt.widget.core.client.form.DateField;
@@ -34,15 +29,9 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridRowEditing;
-import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
-import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar.PagingToolBarMessages;
 
 import br.com.silvaesouza.sampleext.client.model.Plant;
-import br.com.silvaesouza.sampleext.client.service.PersonApplication;
-import br.com.silvaesouza.sampleext.client.service.PersonApplicationAsync;
-import br.com.silvaesouza.sampleext.client.service.PlantService;
-import br.com.silvaesouza.sampleext.client.service.PlantServiceAsync;
 import br.com.silvaesouza.sampleext.client.util.TestData;
 
 public class RowEditingGridExample extends AbstractGridEditingExample {

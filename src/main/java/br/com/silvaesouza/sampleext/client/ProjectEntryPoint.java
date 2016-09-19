@@ -22,6 +22,7 @@ import br.com.silvaesouza.sampleext.client.service.PersonApplication;
 import br.com.silvaesouza.sampleext.client.service.PersonApplicationAsync;
 import br.com.silvaesouza.sampleext.client.ui.BasicGrid;
 import br.com.silvaesouza.sampleext.client.ui.BasicTabExample;
+import br.com.silvaesouza.sampleext.client.ui.FormsExample;
 import br.com.silvaesouza.sampleext.client.ui.MyPaginationDataGrid;
 import br.com.silvaesouza.sampleext.client.ui.RowEditingGridExample;
 import br.com.silvaesouza.sampleext.client.ui.SimpleGrid;
@@ -40,16 +41,12 @@ public class ProjectEntryPoint implements EntryPoint {
 	private TextButton textButtonBasicTab;
 	private TextButton textButtonConexao;
 	private TextButton buttonRowGridEditor;
+	private TextButton buttonFormExample;
 
 	@Override
 	public void onModuleLoad() {
-		addButtonsInit();
-		
 		RootPanel.get("header").clear(true);
-		RootPanel.get("header").add(buttonPagingDataGrid);
-		RootPanel.get("header").add(textButtonBasicTab);
-		RootPanel.get("header").add(textButtonConexao);
-		RootPanel.get("header").add(buttonRowGridEditor);
+		addButtonsInit();
 	}
 
 	private void addButtonsInit() {
@@ -101,6 +98,21 @@ public class ProjectEntryPoint implements EntryPoint {
 				setContent(Examples.ROWGRIDEDITOR);
 			}
 		});
+		
+		// BUTTON ROW GRID EDITOR
+		buttonFormExample = new TextButton("Form Example");
+		buttonFormExample.addSelectHandler(new SelectHandler() {
+			@Override
+			public void onSelect(SelectEvent event) {
+				setContent(Examples.FORMEXAMPLE);
+			}
+		});
+		
+		RootPanel.get("header").add(buttonPagingDataGrid);
+		RootPanel.get("header").add(textButtonBasicTab);
+		RootPanel.get("header").add(textButtonConexao);
+		RootPanel.get("header").add(buttonRowGridEditor);
+		RootPanel.get("header").add(buttonFormExample);
 	}
 	
 	private PersonG getPerson(){
@@ -123,9 +135,20 @@ public class ProjectEntryPoint implements EntryPoint {
 			break;
 		case ROWGRIDEDITOR:
 			addRowGridEditor();
+			break;
+		case FORMEXAMPLE:
+			addFormExample();
+			break;
 		default:
 			break;
 		}
+	}
+	
+	private void addFormExample() {
+		FormsExample forms = new FormsExample();
+		
+		RootPanel.get("content").clear(true);
+		RootPanel.get("content").add(forms);
 	}
 
 	private void addRowGridEditor() {
