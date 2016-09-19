@@ -1,6 +1,8 @@
 package br.com.silvaesouza.sampleext.client.vo;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 public class FormExampleVO implements Serializable{
 	
@@ -12,21 +14,21 @@ public class FormExampleVO implements Serializable{
 	private String name;
 	private String email;
 	private String password;
-	private String age;
+	private Integer age;
 	private String company;
-	private String birthday;
-	private String time;
-	private String size;
-	private String music;
+	private Date birthday;
+	private Date time;
+	private Integer size;
+	private List<String> music;
 	private String color;
 	private String description;
-	private String duration;
+	private Double duration;
 
 	public FormExampleVO() {
 	}
 
-	public FormExampleVO(String name, String email, String password, String age, String company, String birthday,
-			String time, String size, String music, String color, String description, String duration) {
+	public FormExampleVO(String name, String email, String password, Integer age, String company, Date birthday,
+			Date time, Integer size, List<String> music, String color, String description, Double duration) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -66,11 +68,11 @@ public class FormExampleVO implements Serializable{
 		this.password = password;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -82,35 +84,35 @@ public class FormExampleVO implements Serializable{
 		this.company = company;
 	}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
-	public String getTime() {
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
-	public String getSize() {
+	public Integer getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
+	public void setSize(Integer size) {
 		this.size = size;
 	}
 
-	public String getMusic() {
+	public List<String> getMusic() {
 		return music;
 	}
 
-	public void setMusic(String music) {
+	public void setMusic(List<String> music) {
 		this.music = music;
 	}
 
@@ -130,12 +132,19 @@ public class FormExampleVO implements Serializable{
 		this.description = description;
 	}
 
-	public String getDuration() {
+	public Double getDuration() {
 		return duration;
 	}
 
-	public void setDuration(String duration) {
+	public void setDuration(Double duration) {
 		this.duration = duration;
+	}
+
+	@Override
+	public String toString() {
+		return "FormExampleVO [name=" + name + ", email=" + email + ", password=" + password + ", age=" + age
+				+ ", company=" + company + ", birthday=" + birthday + ", time=" + time + ", size=" + size + ", music="
+				+ music + ", color=" + color + ", description=" + description + ", duration=" + duration + "]";
 	}
 
 }

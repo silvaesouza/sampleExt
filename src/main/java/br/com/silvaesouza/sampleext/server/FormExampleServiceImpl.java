@@ -14,10 +14,7 @@ public class FormExampleServiceImpl extends RemoteServiceServlet implements Form
 	
 	@Override
 	public String save(FormExampleVO form) {
-		String retorno = form.getName();
-		retorno += ", " + form.getCompany();
-		
-		return "Success... " + retorno;
+		return "Success... " + form;
 	}
 
 }
