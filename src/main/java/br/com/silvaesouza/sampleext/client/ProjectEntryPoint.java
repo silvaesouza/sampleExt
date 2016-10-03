@@ -3,7 +3,7 @@ package br.com.silvaesouza.sampleext.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.sencha.gxt.core.client.GXT;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -15,6 +15,8 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.info.Info;
 
+import br.com.silvaesouza.sampleext.client.app.ui.MyDockLayoutPanel;
+import br.com.silvaesouza.sampleext.client.app.ui.MySplitLayoutPanel;
 import br.com.silvaesouza.sampleext.client.model.ContactDatabase;
 import br.com.silvaesouza.sampleext.client.model.ContactDatabase.ContactInfo;
 import br.com.silvaesouza.sampleext.client.model.PersonG;
@@ -33,15 +35,17 @@ import br.com.silvaesouza.sampleext.client.ui.SimpleGrid;
 public class ProjectEntryPoint implements EntryPoint {
 
 	/* Main Elements of the Website which represent the divs in the HTML-Page */
-	private FlowPanel header = new FlowPanel();
-	private FlowPanel content = new FlowPanel();
-	private FlowPanel footer = new FlowPanel();
+	//private FlowPanel header = new FlowPanel();
+	//private FlowPanel content = new FlowPanel();
+	//private FlowPanel footer = new FlowPanel();
 	
 	private TextButton buttonPagingDataGrid;
 	private TextButton textButtonBasicTab;
 	private TextButton textButtonConexao;
 	private TextButton buttonRowGridEditor;
 	private TextButton buttonFormExample;
+	private TextButton buttonUIBindDock;
+	private TextButton buttonUIBindSplit;
 
 	@Override
 	public void onModuleLoad() {
@@ -108,11 +112,31 @@ public class ProjectEntryPoint implements EntryPoint {
 			}
 		});
 		
+		// BUTTON UI BIND DOCK
+		buttonUIBindDock = new TextButton("UI Bind Dock");
+		buttonUIBindDock.addSelectHandler(new SelectHandler() {
+			@Override
+			public void onSelect(SelectEvent event) {
+				setContent(Examples.UIBINDDOCKLAYOUT);
+			}
+		});
+		
+		// BUTTON UI BIND SPLIT
+		buttonUIBindSplit = new TextButton("UI Bind Split");
+		buttonUIBindSplit.addSelectHandler(new SelectHandler() {
+			@Override
+			public void onSelect(SelectEvent event) {
+				setContent(Examples.UIBINDSPLITLAYOUT);
+			}
+		});
+		
 		RootPanel.get("header").add(buttonPagingDataGrid);
 		RootPanel.get("header").add(textButtonBasicTab);
 		RootPanel.get("header").add(textButtonConexao);
 		RootPanel.get("header").add(buttonRowGridEditor);
 		RootPanel.get("header").add(buttonFormExample);
+		RootPanel.get("header").add(buttonUIBindDock);
+		RootPanel.get("header").add(buttonUIBindSplit);
 	}
 	
 	private PersonG getPerson(){
@@ -139,6 +163,12 @@ public class ProjectEntryPoint implements EntryPoint {
 		case FORMEXAMPLE:
 			addFormExample();
 			break;
+		case UIBINDDOCKLAYOUT:
+			addUiBindDockLayoutExample();
+			break;
+		case UIBINDSPLITLAYOUT:
+			addUiBindSplitLayoutExample();
+			break;
 		default:
 			break;
 		}
@@ -149,6 +179,18 @@ public class ProjectEntryPoint implements EntryPoint {
 		
 		RootPanel.get("content").clear(true);
 		RootPanel.get("content").add(forms);
+	}
+	
+	private void addUiBindDockLayoutExample() {
+		MyDockLayoutPanel myDoc = new MyDockLayoutPanel();
+		
+		RootLayoutPanel.get().add(myDoc);
+	}
+	
+	private void addUiBindSplitLayoutExample() {
+		MySplitLayoutPanel myDoc = new MySplitLayoutPanel();
+		
+		RootLayoutPanel.get().add(myDoc);
 	}
 
 	private void addRowGridEditor() {
