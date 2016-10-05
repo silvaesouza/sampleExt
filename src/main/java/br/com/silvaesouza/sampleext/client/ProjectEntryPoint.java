@@ -2,7 +2,13 @@ package br.com.silvaesouza.sampleext.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.sencha.gxt.core.client.GXT;
@@ -15,6 +21,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.info.Info;
 
+import br.com.silvaesouza.sampleext.client.animation.CustomAnimation;
 import br.com.silvaesouza.sampleext.client.app.ui.MyDockLayoutPanel;
 import br.com.silvaesouza.sampleext.client.app.ui.MySplitLayoutPanel;
 import br.com.silvaesouza.sampleext.client.model.ContactDatabase;
@@ -46,6 +53,7 @@ public class ProjectEntryPoint implements EntryPoint {
 	private TextButton buttonFormExample;
 	private TextButton buttonUIBindDock;
 	private TextButton buttonUIBindSplit;
+	private TextButton buttonAnimation;
 
 	@Override
 	public void onModuleLoad() {
@@ -130,6 +138,15 @@ public class ProjectEntryPoint implements EntryPoint {
 			}
 		});
 		
+		// BUTTON UI BIND SPLIT
+		buttonAnimation = new TextButton("Animation");
+		buttonAnimation.addSelectHandler(new SelectHandler() {
+			@Override
+			public void onSelect(SelectEvent event) {
+				setContent(Examples.ANIMATION);
+			}
+		});
+		
 		RootPanel.get("header").add(buttonPagingDataGrid);
 		RootPanel.get("header").add(textButtonBasicTab);
 		RootPanel.get("header").add(textButtonConexao);
@@ -137,6 +154,7 @@ public class ProjectEntryPoint implements EntryPoint {
 		RootPanel.get("header").add(buttonFormExample);
 		RootPanel.get("header").add(buttonUIBindDock);
 		RootPanel.get("header").add(buttonUIBindSplit);
+		RootPanel.get("header").add(buttonAnimation);
 	}
 	
 	private PersonG getPerson(){
@@ -169,6 +187,9 @@ public class ProjectEntryPoint implements EntryPoint {
 		case UIBINDSPLITLAYOUT:
 			addUiBindSplitLayoutExample();
 			break;
+		case ANIMATION:
+			animation();
+			break;
 		default:
 			break;
 		}
@@ -179,6 +200,37 @@ public class ProjectEntryPoint implements EntryPoint {
 		
 		RootPanel.get("content").clear(true);
 		RootPanel.get("content").add(forms);
+	}
+	
+	private void animation() {
+		AbsolutePanel absolutePanel = null;
+		final Button runButton = new Button("Run");
+        runButton.addStyleName("runButton");
+ 
+        absolutePanel = new AbsolutePanel();
+        absolutePanel.setSize("350px", "350px");
+        absolutePanel.getElement().setId("cwAbsolutePanel");
+        absolutePanel.addStyleName("absolutePanel");
+ 
+        final Image img = new Image(Resources.INSTANCE.gwtLogo());
+        absolutePanel.add(img, 10, 10);
+ 
+        runButton.addClickHandler(new ClickHandler()
+        {
+            public void onClick(ClickEvent event)
+            {
+                CustomAnimation animation = new CustomAnimation(img.getElement());
+                animation.scrollTo(100, 200, 2000);
+            }
+        });
+ 
+        HorizontalPanel mainLayout = new HorizontalPanel();
+        mainLayout.setSpacing(10);
+        mainLayout.add(runButton);
+        mainLayout.add(absolutePanel);
+ 
+        RootPanel.get("content").clear(true);
+        RootPanel.get("content").add(mainLayout);
 	}
 	
 	private void addUiBindDockLayoutExample() {
