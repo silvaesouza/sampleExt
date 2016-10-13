@@ -62,6 +62,7 @@
 			<!-- 'mvn gwt:run' - runs development mode -->
 			<!-- 'mvn gwt:debug' - runs debug mode -->
 			<!-- 'mvn gwt:compile' - compiles gwt -->
+			<!-- 'mvn gwt:eclipse' - generate eclipse launch -->
 			<!-- 'mvn gwt:test' or 'mvn integration-test' - runs the gwt tests (*GwtTest.java), 
 				(run a suite its faster) -->
 			<plugin>
